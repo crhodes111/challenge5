@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Work Day Scheduler</title>
+  </head>
+
+  <body>
+    <header class="jumbotron">
+      <h1 class="display-3">Work Day Scheduler</h1>
+      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p id="currentDay" class="lead"></p>
+    </header>
+    <div class="container">
+      <div class="time-block" id="testing1" >
+        <div class="label-box">
+          <label class="labels" for="timeblock8am"> 8 AM</label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock8am'>
+        <button class="saveBtn" id="saveBtn8am">Save</button>
+      </div>
+      <div class="time-block">
+        <div class="label-box">
+          <label class="labels" for="timeblock9am"> 9 AM </label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock9am'>
+        <button class="saveBtn" id="saveBtn9am">Save</button>
+      </div>
+      <div class="time-block" >
+        <div class="label-box">
+          <label class="labels" for="timeblock10am"> 10 AM</label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock10am'>
+        <button class="saveBtn" id="saveBtn10am">Save</button>
+      </div>
+      <div class="time-block" >
+        <div class="label-box">
+          <label class="labels" for="timeblock11am"> 11 AM</label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock11am'>
+        <button class="saveBtn" id="saveBtn11am">Save</button>
+      </div>
+      <div class="time-block" >
+        <div class="label-box">
+          <label class="labels" for="timeblock12pm"> 12 PM</label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock12pm'>
+        <button class="saveBtn"id="saveBtn12pm">Save</button>
+      </div>
+      <div class="time-block">
+        <div class="label-box">
+          <label class="labels" for="timeblock1pm"> 1 PM </label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock1pm'>
+        <button class="saveBtn" id="saveBtn1pm">Save</button>
+      </div>
+      <div class="time-block">
+        <div class="label-box">
+          <label class="labels" for="timeblock2pm"> 2 PM </label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock2pm'>
+        <button class="saveBtn" id="saveBtn2pm">Save</button>
+      </div>
+      <div class="time-block" >
+        <div class="label-box">
+          <label class="labels" for="timeblock3pm"> 3 PM </label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock3pm'>
+        <button class="saveBtn" id="saveBtn3pm">Save</button>
+      </div>
+      <div class="time-block">
+        <div class="label-box">
+          <label class="labels" for="timeblock4pm"> 4 PM </label>
+        </div>
+        <input name="userinput4pm" type="text" class="inputtext" id='timeblock4pm'>
+        <button class="saveBtn" id="saveBtn4pm">Save</button>
+      </div>
+      <div class="time-block" >
+        <div class="label-box">
+          <label class="labels" for="timeblock5pm"> 5 PM </label>
+        </div>
+        <input type="text" class="inputtext" id='timeblock5pm'>
+        <button class="saveBtn" id="saveBtn5pm">Save</button>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+     var currentDayContainer = document.getElementById('currentDay');
+      var currentDay = function(){
+        var now = moment();
+        var today = moment(now).format('MMMM Do YYYY');
+        currentDayContainer.textContent = today;
+        console.log(today);
+
+      }
+      currentDay();
+      var colorcodeblocks = function(){
+        var now = moment();
+        var currenthour = moment(now).format('H');
+        console.log(currenthour);
+        if(currenthour == 8){
+          $('.inputtext').addClass("future");
+          $('#timeblock8am').removeClass("future");
+          $('#timeblock8am').addClass('present');
+        }
+        else if(currenthour == 9){
+          $('.inputtext').addClass("future");
+          $('#timeblock8am').removeClass("future");
+          $('#timeblock8am').addClass('past');
+          $('#timeblock9am').removeClass("future");
+          $('#timeblock9am').addClass('present');
+        }
+        else if(currenthour == 10){
+          $('.inputtext').addClass("future");
+          $('#timeblock8am').removeClass("future");
+          $('#timeblock8am').addClass('past');
+          $('#timeblock9am').removeClass("future");
+          $('#timeblock9am').addClass('past');
+          $('#timeblock10am').removeClass("future");
+          $('#timeblock10am').addClass('present');
+        }
+        else if(currenthour == 11){
+          $('.inputtext').addClass("future");
+          $('#timeblock8am').removeClass("future");
+          $('#timeblock8am').addClass('past');
+          $('#timeblock9am').removeClass("future");
+          $('#timeblock9am').addClass('past');
+          $('#timeblock10am').removeClass("future");
+          $('#timeblock10am').addClass('past');
+          $('#timeblock11am').removeClass("future");
+          $('#timeblock11am').addClass('present');
+        }
+        else if(currenthour == 12){
+          $('.inputtext').addClass("future");
+          $('#timeblock8am').removeClass("future");
+          $('#timeblock8am').addClass('past');
+          $('#timeblock9am').removeClass("future");
+          $('#timeblock9am').addClass('past');
+          $('#timeblock10am').removeClass("future");
+          $('#timeblock10am').addClass('past');
+          $('#timeblock11am').removeClass("future");
+          $('#timeblock11am').addClass('past');
+          $('#timeblock12pm').removeClass("future");
+          $('#timeblock12pm').addClass('present');
+        }
+        else if(currenthour == 13){
+          $('.inputtext').addClass("future");
+          $('#timeblock8am').removeClass("future");
+          $('#timeblock8am').addClass('past');
+          $('#timeblock9am').removeClass("future");
+          $('#timeblock9am').addClass('past');
+          $('#timeblock10am').removeClass("future");
+          $('#timeblock10am').addClass('past');
+          $('#timeblock11am').removeClass("future");
+          $('#timeblock11am').addClass('past');
+          $('#timeblock12pm').removeClass("future");
+          $('#timeblock12pm').addClass('past');
+          $('#timeblock1pm').removeClass("future");
+          $('#timeblock1pm').addClass('present');
+        }
+        else if(currenthour == 14){
+          $('.inputtext').addClass("past");
+          $('#timeblock2pm').removeClass("past");
+          $('#timeblock2pm').addClass('present');
+          $('#timeblock3pm').removeClass("past");
+          $('#timeblock3pm').addClass('past');
+          $('#timeblock4pm').removeClass("past");
+          $('#timeblock4pm').addClass('future');
+          $('#timeblock5pm').removeClass("past");
+          $('#timeblock5pm').addClass('future');
+
+        }
+        else if(currenthour == 15){
+          $('.inputtext').addClass("past");
+          $('#timeblock3pm').removeClass("past");
+          $('#timeblock3pm').addClass('present');
+          $('#timeblock4pm').removeClass("past");
+          $('#timeblock4pm').addClass('past');
+          $('#timeblock5pm').removeClass("past");
+          $('#timeblock5pm').addClass('future');
+
+
+        }
+        else if(currenthour == 16){
+          $('.inputtext').addClass("past");
+          $('#timeblock4pm').removeClass("past");
+          $('#timeblock4pm').addClass('present');
+          $('#timeblock5pm').removeClass("past");
+          $('#timeblock5pm').addClass('past');
+
+
+
+        }
+        else if(currenthour == 17){
+          $('.inputtext').addClass("past");
+          $('#timeblock5pm').removeClass("past");
+          $('#timeblock5pm').addClass('present');
+
+
+
+
+        }
+        else{
+          $('.inputtext').addClass("future");
+        }
+      }
+      colorcodeblocks();
+      window.onload = function(){
+        var text8am = localStorage.getItem('userText8');
+        console.log(text8am);
+        var text9am = localStorage.getItem('userText9');
+        var text10am = localStorage.getItem('userText10');
+        var text11am = localStorage.getItem('userText11');
+        var text12pm = localStorage.getItem('userText12');
+        var text1pm = localStorage.getItem('userText1');
+        var text2pm = localStorage.getItem('userText2');
+        var text3pm = localStorage.getItem('userText3');
+        var text4pm = localStorage.getItem('userText4');
+        var text5pm = localStorage.getItem('userText5');
+        $('#timeblock8am').val(text8am);
+        $('#timeblock9am').val(text9am);
+        $('#timeblock10am').val(text10am);
+        $('#timeblock11am').val(text11am);
+        $('#timeblock12pm').val(text12pm);
+        $('#timeblock1pm').val(text1pm);
+        $('#timeblock2pm').val(text2pm);
+        $('#timeblock3pm').val(text3pm);
+        $('#timeblock4pm').val(text4pm);
+        $('#timeblock5pm').val(text5pm);
+
+      }
+     
+      $('#saveBtn8am').on("click", function(){
+        var userText = $('#timeblock8am').val();
+        localStorage.setItem('userText8', userText);
+        
+      })
+      $('#saveBtn9am').on("click", function(){
+        var userText1 = $("#timeblock9am").val();
+        localStorage.setItem('userText9', userText1);
+        
+      })
+      $('#saveBtn10am').on("click", function(){
+        var userText2 = $("#timeblock10am").val();
+        localStorage.setItem('userText10', userText2);
+        
+      })
+      $('#saveBtn11am').on("click", function(){
+        var userText3 = $("#timeblock11am").val();
+        localStorage.setItem('userText11', userText3);
+        
+      })
+      $('#saveBtn12pm').on("click", function(){
+        var userText4 = $("#timeblock12pm").val();
+        localStorage.setItem('userText12', userText4);
+        
+      })
+      $('#saveBtn1pm').on("click", function(){
+        var userText5 = $("#timeblock1pm").val();
+        localStorage.setItem('userText1', userText5);
+        
+      })
+      $('#saveBtn2pm').on("click", function(){
+        var userText6 = $("#timeblock2pm").val();
+        localStorage.setItem('userText2', userText6);
+        
+      })
+      $('#saveBtn3pm').on("click", function(){
+        var userText7 = $("#timeblock3pm").val();
+        localStorage.setItem('userText3', userText7);
+        
+      })
+      $('#saveBtn4pm').on("click", function(){
+        var userText8 = $("#timeblock4pm").val();
+        localStorage.setItem('userText4', userText8);
+        
+      })
+      $('#saveBtn5pm').on("click", function(){
+        var userText9 = $("#timeblock5pm").val();
+        localStorage.setItem('userText5', userText9);
+        
+      })
+      
+
+    </script>
+  </body>
+</html>
